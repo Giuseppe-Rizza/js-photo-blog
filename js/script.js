@@ -21,16 +21,46 @@ axios.get(endpoint)
             <div class="card mb-5 px-3 py-3" style="width: 18rem;" >
                 <img src="${url}" class="card-img-top" alt="...">
                     <div class="card-body px-0">
-                        <p class="card-text mb-0"><font face="Sometype Mono"></font>${date}</font>
+                        <p class="card-text mb-0">${date}
                         </p>
                         <h3 class="fw-semibold">
-                            <font face="Edu Tas Beginner">${title}</font>
+                            ${title}
                         </h3>
                     </div>
             </div>
             `;
         }
-    })
+
+
+    // Seleziono gli elementi di output
+    const overlay = document.getElementById("overlay");
+    const btn = document.querySelector(".btn");
+    const window = document.getElementById("window");
+    const multipleCards = document.querySelectorAll(".card");
+
+    // Ciclo le card con un for each per manipolare l'elemento del DOM al click
+    multipleCards.forEach((element) => {
+        element.addEventListener("click", () => {
+            
+            const cardImgTop = document.querySelectorAll(".card-img-top");
+            const imgUrl = cardImgTop.src;
+
+            window.innerHTML = `
+            <img src="${imgUrl}" class="card-img-top" alt="...">
+            `;
+
+            overlay.classList.remove("hidden");
+        });
+
+    });
+
+    btn.addEventListener("click", () => {
+        overlay.classList.add("hidden");
+    });
+
+
+
+})
     .catch(error => {
         console.error(error)
-    });
+});
