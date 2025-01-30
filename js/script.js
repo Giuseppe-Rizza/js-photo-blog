@@ -37,15 +37,16 @@ axios.get(endpoint)
     const btn = document.querySelector(".btn");
     const window = document.getElementById("window");
     const multipleCards = document.querySelectorAll(".card");
+    const cardImgTop = document.querySelectorAll(".card-img-top");
 
     // Ciclo le card con un for each per manipolare l'elemento del DOM al click
     multipleCards.forEach((element) => {
         element.addEventListener("click", () => {
             
-            const cardImgTop = document.querySelectorAll(".card-img-top");
-            const imgUrl = cardImgTop.src;
+            
+            const imgUrl = cardImgTop[i].src;
 
-            window.innerHTML = `
+            window.innerHTML += `
             <img src="${imgUrl}" class="card-img-top" alt="...">
             `;
 
